@@ -1,10 +1,13 @@
 package com.sescon.cursomc.domain;
 
+import javax.persistence.Entity;
+
 import com.sescon.cursomc.domain.enums.EstadoPagamento;
 
 import lombok.Data;
 
 @Data
+@Entity
 public class PagamentoComCartao extends Pagamento {
 	private static final long serialVersionUID = 1L;
 
