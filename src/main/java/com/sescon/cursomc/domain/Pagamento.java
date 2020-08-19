@@ -11,6 +11,7 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sescon.cursomc.domain.enums.EstadoPagamento;
 
 import lombok.Data;
@@ -25,7 +26,7 @@ public abstract class Pagamento implements Serializable {
 	private Integer Id;
 	private Integer estado;
 	
-	@JsonBackReference
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "predido_id")
 	@MapsId
