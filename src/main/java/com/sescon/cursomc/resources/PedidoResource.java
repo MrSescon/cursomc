@@ -15,11 +15,11 @@ import com.sescon.cursomc.services.PedidoService;
 public class PedidoResource {
 
 	@Autowired
-	private PedidoService PedidoService;
+	private PedidoService pedidoService;
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Pedido> find(@PathVariable Integer id) {
-		Pedido obj = PedidoService.find(id);
+		Pedido obj = pedidoService.find(id);
 
 		return ResponseEntity.ok().body(obj);
 	}
