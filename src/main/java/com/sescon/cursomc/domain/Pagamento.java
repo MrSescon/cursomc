@@ -10,22 +10,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.sescon.cursomc.domain.enums.EstadoPagamento;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public abstract class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Integer Id;
 	private Integer estado;
-	
+
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "predido_id")
@@ -42,14 +43,13 @@ public abstract class Pagamento implements Serializable {
 		this.estado = (estado == null) ? null : estado.getCod();
 		this.pedido = pedido;
 	}
-	
-	public EstadoPagamento getEstado( ) {
+
+	public EstadoPagamento getEstado() {
 		return EstadoPagamento.toEnum(estado);
 	}
-	
+
 	public void setEstado(EstadoPagamento estado) {
-		this.estado = estado.getCod();	}
-	
-	
+		this.estado = estado.getCod();
+	}
 
 }

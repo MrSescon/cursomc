@@ -16,7 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -28,8 +27,8 @@ public class Pedido implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
+
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date instante;
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
@@ -82,14 +81,14 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	public double getValorTotal() {
 		double soma = 0.0;
-		for(ItemPedido ip: itens) {
+		for (ItemPedido ip : itens) {
 			soma = soma + ip.getSubTotal();
 		}
 		return soma;
-		
+
 	}
 
 }
