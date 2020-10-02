@@ -58,7 +58,7 @@ public class PedidoService {
 			ip.setPedido(pedido);
 		}
 		itemPedidoRepository.saveAll(pedido.getItens());
-		return pedido;
+		return pedido; 
 	}
 
 }
