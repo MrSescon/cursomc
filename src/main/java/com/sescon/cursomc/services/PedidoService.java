@@ -67,7 +67,10 @@ public class PedidoService {
 		}
 		System.out.println(pedido);
 		itemPedidoRepository.saveAll(pedido.getItens());
+//		email com texto plano
 		emailService.sendOrderComfirmationEmail(pedido);
+//		email com html
+		emailService.sendOrderComfirmationHtmlEmail(pedido);
 		return pedido;
 	}
 
